@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class bullet_movement : MonoBehaviour {
 
-    
     [SerializeField] float max_speed = 3.0f;
     TrailRenderer tr;
     private bool fired = false;
 
     private float timer = 0;
+    private float death_timer = 0;
+    private float lifespan = 3.0f;
 	// Use this for initialization
 	void Start ()
 	{
-	    tr = GetComponent<TrailRenderer>();
+	    //tr = GetComponent<TrailRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-        if (!TimeManager.Instance.MovementDetected)
+        if (!TimeManager.Instance.MovementDetected) return;
+
+        death_timer += TimeManager.Instance.TimeScale;
+
+        if (death_timer >= lifespan)
         {
-            //tr.time = Mathf.Infinity;
-            //timer = 0;
-            return;
+            Destroy(this.gameObject);
         }
 
-	    //timer += Time.deltaTime;
-     //   tr.time = 1+ timer;
         if (fired)
         {
             float step = max_speed * Time.deltaTime;
@@ -36,17 +37,26 @@ public class bullet_movement : MonoBehaviour {
         }
 	}
 
-    public void SetTarget(Transform _target)
+    public void SetTarget(Transform _target, float _accuracy)
     {
-        transform.right = _target.position - transform.position;
+        Vector3 direction = _target.position - transform.position;
+
+        direction.x += Random.Range(-_accuracy, _accuracy);
+        direction.y += Random.Range(-_accuracy, _accuracy);
+
+        transform.right = direction;
 
         fired = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            return;
+        }
+
         fired = false;
-        this.gameObject.GetComponent<TrailRenderer>().time = 0.3f;
-        Destroy(this.gameObject, 0.5f);
+        Destroy(this.gameObject);
     }
 }

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114789596327944990}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961249346079884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.21, y: -4.39, z: 0}
+  m_LocalPosition: {x: -6.577, y: -3.5909116, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,10 +52,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542aa07c26632a54a9328eee57710733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipped_gun: 0
   bullet_prefab: {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a,
     type: 2}
   vision_radius: 20
-  shooting_delay: 1
+  shooting_delay: 1.5
+  burst_shooting_delay: 0.2
+  pistol_accuracy: 0.3
+  rifle_accuracy: 0.5
+  shotgun_accuracy: 1
 --- !u!212 &212628631633436606
 SpriteRenderer:
   m_ObjectHideFlags: 1
