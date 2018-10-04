@@ -5,17 +5,21 @@ using UnityEngine;
 public class bullet_movement : MonoBehaviour {
 
     [SerializeField] float max_speed = 3.0f;
-    TrailRenderer tr;
     private bool fired = false;
+    private bool dead = false;
 
     private float timer = 0;
     private float death_timer = 0;
     private float lifespan = 3.0f;
+
+    private LineRenderer lr;
 	// Use this for initialization
 	void Start ()
 	{
-	    //tr = GetComponent<TrailRenderer>();
-	}
+        lr = GetComponent<LineRenderer>();
+        lr.SetPosition(0, transform.position);
+        lr.SetPosition(1, transform.position);
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -26,14 +30,32 @@ public class bullet_movement : MonoBehaviour {
 
         if (death_timer >= lifespan)
         {
-            Destroy(this.gameObject);
+            KillBullet();
         }
 
         if (fired)
         {
+            lr.SetPosition(0, transform.position);
+
             float step = max_speed * Time.deltaTime;
 
             transform.position += transform.right * (Time.deltaTime * max_speed);
+        }
+
+        if (dead)
+        {
+            if (lr.GetPosition(1) != (lr.GetPosition(0)))
+            {
+                float step = 20 * Time.deltaTime;
+
+                Vector3 distance = Vector3.MoveTowards(lr.GetPosition(1), lr.GetPosition(0), step);
+
+                lr.SetPosition(1, distance);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 	}
 
@@ -56,7 +78,15 @@ public class bullet_movement : MonoBehaviour {
             return;
         }
 
+        KillBullet();
         fired = false;
-        Destroy(this.gameObject);
+    }
+
+    private void KillBullet()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        dead = true;
     }
 }
