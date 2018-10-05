@@ -21,13 +21,13 @@ public class AnimationController : MonoBehaviour
             anim.SetInteger("State", 3);
         }
         //Else if Moving (Needs a moving check here)
-        else
+        else if (TimeManager.Instance.MovementDetected)
         {
             //Animate Moving
             anim.SetInteger("State", 2);
         }
         //Else stand 
-        //else 
-        //anim.SetInteger("State", 0);
+        else
+            anim.SetInteger("State", 0);
     }
 }
