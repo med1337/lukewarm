@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jump = false;
     private bool crouch = false;
     [SerializeField] private CharacterController2D controller2D;
+    [SerializeField] private AnimationController animControl;
 
     [SerializeField] private float speed;
     private Rigidbody2D rigidbody2D;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         controller2D = GetComponent<CharacterController2D>();
+        animControl = GetComponent<AnimationController>(); 
         horizontal = Input.GetAxisRaw("Horizontal");
     }
 
@@ -29,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
         TimeManager.Instance.MovementDetected = rigidbody2D.velocity != Vector2.zero;
         TimeManager.Instance.Scale = rigidbody2D.velocity.normalized.magnitude;
         controller2D.Move(horizontal * Time.fixedDeltaTime , crouch, jump);
-        jump = false;
+        animControl.ChangeAnim(jump, crouch); 
+        //jump = false;
 
 
     }
@@ -37,15 +40,19 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal") * speed;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             jump = true;
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+        {
+            jump = false;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             crouch = true;
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
         {
             crouch = false;
         }

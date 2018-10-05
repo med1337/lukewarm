@@ -12,13 +12,13 @@ public class AnimationController : MonoBehaviour
         anim = this.GetComponent<Animator>(); 
 	}
 	
-	void Update ()
+	public void ChangeAnim(bool up, bool down)
     {
         //If not grounded
-        if (!gameObject.GetComponent<CharacterController2D>().m_Grounded)
+        if (up || down)
         {
-            //Animate Jump
-            anim.SetInteger("State", 3);
+            //Animate up down
+            anim.SetInteger("State", 1);
         }
         //Else if Moving (Needs a moving check here)
         else if (TimeManager.Instance.MovementDetected)
