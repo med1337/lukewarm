@@ -13,10 +13,12 @@ public class CameraMovement : MonoBehaviour
     public bool blockInput = false;
     public bool exiting;
 
+    private Rigidbody rigidbody;
 
     // Use this for initialization
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         Application.targetFrameRate = 10;
     }
 
@@ -60,6 +62,19 @@ public class CameraMovement : MonoBehaviour
             {
                 StartCoroutine(Rotate(false));
             }
+        }
+
+        if (horizontal != 0 || vertical != 0)
+        {
+
+            TimeManager.Instance.MovementDetected = true;
+            TimeManager.Instance.Scale = 1;
+        }
+        else
+        {
+
+            TimeManager.Instance.Scale = 0;
+            TimeManager.Instance.MovementDetected = false;
         }
     }
 

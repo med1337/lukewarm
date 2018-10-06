@@ -29,7 +29,7 @@ public class ObstacleMovement : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!TimeManager.Instance.MovementDetected) return;
 
@@ -42,7 +42,7 @@ public class ObstacleMovement : MonoBehaviour
     {
         Vector3 direction = positions[index].position - transform.position;
 
-        transform.position += direction * speed * TimeManager.Instance.TimeScale;
+        transform.position += direction.normalized * speed * Time.deltaTime;
         if (Vector3.Distance(transform.position, positions[index].position) <= 0.1f)
         {
             transform.position = positions[index].position;
