@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private float horizontal;
+    [SerializeField] private float Speed;
 
     private float vertical;
 
@@ -19,7 +20,8 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Application.targetFrameRate = 10;
+        Application.targetFrameRate = 15;
+        Screen.SetResolution(190,162,FullScreenMode.FullScreenWindow);
     }
 
 
@@ -28,12 +30,12 @@ public class CameraMovement : MonoBehaviour
     {
         if (blockInput) return;
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal") * Speed;
+        vertical = Input.GetAxisRaw("Vertical") * Speed;
         if (!intersection)
         {
             if (horizontal > 0)
-                transform.position += transform.right * Time.deltaTime;
+                transform.position += transform.right * Time.deltaTime ;
             else if (horizontal < 0)
                 transform.position -= transform.right * Time.deltaTime;
 
