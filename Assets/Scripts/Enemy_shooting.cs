@@ -17,6 +17,7 @@ public class Enemy_shooting : MonoBehaviour
     [SerializeField] float shooting_delay = 1.0f;
     [SerializeField] float burst_shooting_delay = 0.4f;
 
+    [Header("Accuracy - (Lower is better)")]
     [SerializeField] float pistol_accuracy = 0.1f;
     [SerializeField] float rifle_accuracy = 0.3f;
     [SerializeField] float shotgun_accuracy = 0.5f;
@@ -26,81 +27,74 @@ public class Enemy_shooting : MonoBehaviour
     private float shooting_timer = 0.0f;
     private float burst_shooting_timer = 0.0f;
 
-    private GameObject player_ref;
-
+    private Transform player_ref;
 
     // Use this for initialization
     void Start()
     {
-        player_ref = GameObject.FindGameObjectWithTag("Player");
+        player_ref = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!TimeManager.Instance.MovementDetected) return;        
+        if (!TimeManager.Instance.MovementDetected) return;            
 
         shooting_timer += TimeManager.Instance.TimeScale;
         burst_shooting_timer += TimeManager.Instance.TimeScale;
 
-
         if ((equipped_gun == GUN.Rifle) && (burst_shooting_timer <= burst_shooting_delay))
         {
             return;
-        }        
+        }
 
         if (((equipped_gun == GUN.Rifle) && (burst_counter < 3)) || (shooting_timer >= shooting_delay))
         {
             if (burst_counter >= 3)
             {
                 burst_counter = 0;
-            }
+            }            
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player_ref.transform.position - transform.position), vision_radius);
-
-            if (hit.collider != null)
-            {                
-                if (hit.collider.tag == "Player")
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, (player_ref.position - transform.position), out hit, vision_radius))
+            {
+                if (hit.collider.gameObject.GetComponent<CameraMovement>())
                 {
-                    shooting_timer = 0.0f;
-                    burst_shooting_timer = 0.0f;
+                    float minimum_distance = 3.0f;
 
-                    if (equipped_gun == GUN.Shotgun)
+                    if (hit.distance > minimum_distance)
                     {
-                        for (int i = 0; i < shotgun_pellet_num; i++)
-                        {
-                            GameObject bullet = Instantiate(bullet_prefab, transform.position, Quaternion.identity);
-                            bullet.GetComponent<bullet_movement>().SetTarget(player_ref.gameObject.transform, shotgun_accuracy);
-                        }
-                    }
+                        Debug.Log(hit.collider.gameObject.name);
+                        shooting_timer = 0.0f;
+                        burst_shooting_timer = 0.0f;
 
-                    else
-                    {
-                        GameObject bullet = Instantiate(bullet_prefab, transform.position, Quaternion.identity);
-
-                        if (equipped_gun == GUN.Rifle)
+                        if (equipped_gun == GUN.Shotgun)
                         {
-                            burst_counter++;
-                            bullet.GetComponent<bullet_movement>().SetTarget(player_ref.gameObject.transform, rifle_accuracy);
+                            for (int i = 0; i < shotgun_pellet_num; i++)
+                            {
+                                GameObject bullet = Instantiate(bullet_prefab, transform.position, Quaternion.identity);
+                                bullet.GetComponent<bullet_movement>().SetTarget(player_ref, shotgun_accuracy);
+                            }
                         }
+
                         else
                         {
-                            bullet.GetComponent<bullet_movement>().SetTarget(player_ref.gameObject.transform, pistol_accuracy);
-                        }
+                            GameObject bullet = Instantiate(bullet_prefab, transform.position, Quaternion.identity);
 
+                            if (equipped_gun == GUN.Rifle)
+                            {
+                                burst_counter++;
+                                bullet.GetComponent<bullet_movement>().SetTarget(player_ref, rifle_accuracy);
+                            }
+                            else
+                            {
+                                bullet.GetComponent<bullet_movement>().SetTarget(player_ref, pistol_accuracy);
+                            }
+
+                        }
                     }
                 }
             }
-
-            //Collider2D[] hit_collider =
-            //    Physics2D.OverlapCircleAll(transform.position, vision_radius);
-            //foreach (var d in hit_collider)
-            //{
-            //    if (d.gameObject.GetComponent<PlayerMovement>())
-            //    {
-                    
-            //    }
-            //}
         }
     }
 }

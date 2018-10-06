@@ -10,7 +10,8 @@ public class bullet_movement : MonoBehaviour {
 
     private float timer = 0;
     private float death_timer = 0;
-    private float lifespan = 3.0f;
+    private float lifespan = 1.0f;
+    private float max_lifespan = 5.0f;
 
     private LineRenderer lr;
 	// Use this for initialization
@@ -22,7 +23,7 @@ public class bullet_movement : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
         if (!TimeManager.Instance.MovementDetected) return;
 
@@ -33,13 +34,27 @@ public class bullet_movement : MonoBehaviour {
             KillBullet();
         }
 
+        if (death_timer >= max_lifespan)
+        {
+            Destroy(this.gameObject);
+        }
+
         if (fired)
         {
             lr.SetPosition(0, transform.position);
 
+            if (lr.GetPosition(1) != (lr.GetPosition(0)))
+            {
+                float step1 = 3 * Time.deltaTime;
+
+                Vector3 distance = Vector3.MoveTowards(lr.GetPosition(1), lr.GetPosition(0), step1);
+
+                lr.SetPosition(1, distance);
+            }
+
             float step = max_speed * Time.deltaTime;
 
-            transform.position += transform.right * (Time.deltaTime * max_speed);
+            transform.position += transform.forward * (Time.deltaTime * max_speed);
         }
 
         if (dead)
@@ -65,8 +80,9 @@ public class bullet_movement : MonoBehaviour {
 
         direction.x += Random.Range(-_accuracy, _accuracy);
         direction.y += Random.Range(-_accuracy, _accuracy);
+        direction.z += Random.Range(-_accuracy, _accuracy);
 
-        transform.right = direction;
+        transform.forward = direction;
 
         fired = true;
     }
