@@ -56,3 +56,5 @@ MonoBehaviour:
   TimeScale: 0
   Scale: 0
   Timer: 0
+  Title: {fileID: 0}
+  timerText: {fileID: 0}
