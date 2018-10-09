@@ -1108,12 +1108,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec36f879ca7c0ab4c932ddfe0434f2d3, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &654312278 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114426043196168090, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1921090543}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &725300466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,12 +1398,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &837343811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1921090543}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1031324128
 Prefab:
   m_ObjectHideFlags: 0
@@ -2164,117 +2152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114860175914409884, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: Title
-      value: 
-      objectReference: {fileID: 837343811}
-    - target: {fileID: 114860175914409884, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: timerText
-      value: 
-      objectReference: {fileID: 654312278}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_MinSize
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 117.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_AlignByGeometry
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224059838337585760, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_FontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114098124569501526, guid: 3df1dab48df5e6140a11f8b1beacddc5,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: bd99851f23cb9784581538efb79b7594,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df1dab48df5e6140a11f8b1beacddc5, type: 2}
   m_IsPrefabAsset: 0

@@ -49,7 +49,7 @@ public class CameraMovement : MonoBehaviour
             transform.position -= transform.forward * Time.deltaTime;
         }
 
-        if (!button)
+        if (!GameManager.Instance.Hold)
         {
             if (horizontal > 0)
                 transform.position += transform.right * Time.deltaTime;
@@ -72,7 +72,7 @@ public class CameraMovement : MonoBehaviour
         if (horizontal != 0 || vertical != 0)
         {
             //Debug.Log(button + ", " + horizontal + ", " + vertical);
-            if (button && vertical==0)
+            if (GameManager.Instance.Hold && vertical == 0)
             {
                 TimeManager.Instance.Scale = 0;
                 TimeManager.Instance.MovementDetected = false;
@@ -88,8 +88,7 @@ public class CameraMovement : MonoBehaviour
             TimeManager.Instance.Scale = 0;
             TimeManager.Instance.MovementDetected = false;
         }
-
-        button = Input.GetKey(KeyCode.Return);
+        
     }
 
 
@@ -148,6 +147,15 @@ public class CameraMovement : MonoBehaviour
         transform.position = tr.position;
         blockInput = false;
         yield return null;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bullet")
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
 
