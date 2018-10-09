@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUpScript : MonoBehaviour {
 
     public Camera playerCam;
-    public float speed = 1;
+    public float speed = 5;
     public float throwSpeed = 0.1f; 
     Vector3 pos;
     Vector3 offset = new Vector3(0.15f, -0.19f, 0.35f);
@@ -20,24 +20,24 @@ public class PickUpScript : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    //void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    transform.parent = col.transform; 
-    //}
+    void OnTriggerEnter(Collider col)
+    {
+        if (col == playerCam.GetComponent<BoxCollider>())
+        pickup = true; 
+    }
 
     private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!pickup)
-                pickup = true;
-            else
+            if (transform.parent != null && transform.localPosition == offset)
                 thrown = true; 
         }
+        if (!TimeManager.Instance.MovementDetected) return;
         if (thrown)
         {
             transform.parent = null;
-            transform.localPosition += new Vector3(0, 0, throwSpeed); 
+            transform.position += playerCam.transform.forward * Time.deltaTime * throwSpeed; // (0, 0, throwSpeed); 
         }
         else if (pickup)
         {
