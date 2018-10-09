@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523336802875896}
   - component: {fileID: 212026114019098318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,9 @@ GameObject:
   - component: {fileID: 198150431164292154}
   - component: {fileID: 199260627512417514}
   - component: {fileID: 114725628474334724}
-  m_Layer: 0
+  - component: {fileID: 114458950533004676}
+  - component: {fileID: 114358306402924244}
+  m_Layer: 11
   m_Name: Death Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +61,9 @@ GameObject:
   - component: {fileID: 114444745374301740}
   - component: {fileID: 54002631215419392}
   - component: {fileID: 65356189084605748}
-  m_Layer: 0
+  - component: {fileID: 114662252886322026}
+  - component: {fileID: 114714117070557484}
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,8 +77,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961249346079884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.58, y: 1.19, z: -3.2347338}
-  m_LocalScale: {x: 8, y: 8, z: 5}
+  m_LocalPosition: {x: -19, y: 0.87, z: 7}
+  m_LocalScale: {x: 16, y: 8, z: 10}
   m_Children:
   - {fileID: 4683851054719478}
   - {fileID: 4523336802875896}
@@ -134,6 +138,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.21, z: 0.008309794}
   m_Center: {x: 0, y: 0, z: -0.00081913493}
+--- !u!114 &114358306402924244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830699277242238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 411743824, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -17433
+  prefabIdentity: 
+  observedComponents:
+  - {fileID: 114458950533004676}
 --- !u!114 &114444745374301740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +167,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_speed: 1
   death_particles: {fileID: 198150431164292154}
+--- !u!114 &114458950533004676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830699277242238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -698208440, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -1
+  observedParticleSystem: {fileID: 198150431164292154}
+  simulateChildren: 0
+--- !u!114 &114662252886322026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961249346079884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -864523685, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -22038
+  recordPosition: 1
+  recordRotation: 1
+  recordScale: 0
+  interpolate: 1
+  lowPrecision: 0
+--- !u!114 &114714117070557484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961249346079884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 411743824, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -15881
+  prefabIdentity: 
+  observedComponents:
+  - {fileID: 114662252886322026}
+  - {fileID: 114458950533004676}
 --- !u!114 &114725628474334724
 MonoBehaviour:
   m_ObjectHideFlags: 1

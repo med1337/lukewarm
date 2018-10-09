@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UltimateReplay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,11 @@ public class TimeManager : MonoSingleton<TimeManager>
     [SerializeField] private Text reatltimeTimerText;
 
 
+    private void Start()
+    {
+        ReplayManager.ForceAwake();
+    }
+
     private void Update()
     {
         TimeScale = UnityEngine.Time.deltaTime * Scale;
@@ -24,7 +30,7 @@ public class TimeManager : MonoSingleton<TimeManager>
         var ts = TimeSpan.FromSeconds(RealtimeTimer);
         
         //string str = ts.Minutes + ":" + ts.Seconds + ":" + ts.Milliseconds;
-        var deb = string.Format("{0:00}:{1:00}:{2:00}",
+        var deb = string.Format("{0:00}:{1:00}:{2:000}",
             ts.Minutes,
             ts.Seconds,ts.Milliseconds);
         reatltimeTimerText.text = deb;
@@ -32,7 +38,7 @@ public class TimeManager : MonoSingleton<TimeManager>
         {
             Timer += Time.deltaTime;
              ts = TimeSpan.FromSeconds(Timer);
-            deb = string.Format("{0:00}:{1:00}:{2:00}",
+            deb = string.Format("{0:00}:{1:00}:{2:000}",
                 ts.Minutes,
                 ts.Seconds, ts.Milliseconds);
             timerText.text = deb;

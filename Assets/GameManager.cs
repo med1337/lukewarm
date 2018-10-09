@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UltimateReplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -82,9 +83,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameOver()
     {
+        UltimateReplay.ReplayManager.StopRecording();
+        ReplayManager.BeginPlayback();
+        Time.timeScale = 2;
         //todo: display gameover screen;
-        Started = false;
-        SceneManager.LoadScene(0);
+        //Started = false;
+        //SceneManager.LoadScene(0);
     }
 
 
