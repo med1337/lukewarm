@@ -2,29 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpScript : MonoBehaviour {
+public class PickUpScript : MonoBehaviour
+{
 
     public Camera playerCam;
+    public Sprite broken;
     public float speed = 5;
-    public float throwSpeed = 0.1f; 
+    public float throwSpeed = 0.1f;
     Vector3 pos;
     Vector3 offset = new Vector3(0.15f, -0.19f, 0.35f);
-    Vector3 throwDir; 
+    Vector3 throwDir;
     bool pickup = false;
-    bool thrown = false; 
-	// Use this for initialization
-	void Start ()
+    bool thrown = false;
+    // Use this for initialization
+    void Start()
     {
 
         pos = transform.position;
         //grabPos = playerCam.transform.position + offset;
-	}
+    }
 
     // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
         if (col == playerCam.GetComponent<BoxCollider>())
-        pickup = true; 
+            pickup = true;
+        else if (thrown)
+        {
+            SpriteRenderer myRenderer = transform.GetComponent<SpriteRenderer>();
+            myRenderer.sprite = broken;
+        }
     }
 
     private void FixedUpdate()
@@ -34,7 +41,9 @@ public class PickUpScript : MonoBehaviour {
             if (transform.parent != null && transform.localPosition == offset)
             {
                 thrown = true;
-                throwDir = playerCam.transform.forward; 
+                throwDir = playerCam.transform.forward;
+                SphereCollider myCollider = transform.GetComponent<SphereCollider>();
+                myCollider.radius = 0.1f;
             }
         }
         if (!TimeManager.Instance.MovementDetected) return;
@@ -45,9 +54,10 @@ public class PickUpScript : MonoBehaviour {
         }
         else if (pickup)
         {
-            transform.parent = playerCam.transform; 
+            transform.parent = playerCam.transform;
             float step = speed * Time.deltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, offset, step);
         }
     }
 }
+

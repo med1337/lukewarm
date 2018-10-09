@@ -22,6 +22,12 @@ public class Enemy_shooting : MonoBehaviour
     [SerializeField] float rifle_accuracy = 0.3f;
     [SerializeField] float shotgun_accuracy = 0.5f;
 
+    [Header("Gun sprites")]
+    [SerializeField] Sprite pistol_sprite;
+    [SerializeField] Sprite rifle_sprite;
+    [SerializeField] Sprite shotgun_sprite;
+    [SerializeField] GameObject equipped_gun_sprite;
+
     private int shotgun_pellet_num = 5;
     private int burst_counter = 0;
     private float shooting_timer = 0.0f;
@@ -33,6 +39,20 @@ public class Enemy_shooting : MonoBehaviour
     void Start()
     {
         player_ref = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
+        switch(equipped_gun)
+        {
+            case GUN.Pistol:
+                equipped_gun_sprite.GetComponent<SpriteRenderer>().sprite = pistol_sprite;
+                return;
+            case GUN.Rifle:
+                equipped_gun_sprite.GetComponent<SpriteRenderer>().sprite = rifle_sprite;
+                return;
+            case GUN.Shotgun:
+                equipped_gun_sprite.GetComponent<SpriteRenderer>().sprite = shotgun_sprite;
+                equipped_gun_sprite.transform.localScale *= 2;
+                return;
+        }
     }
 
     // Update is called once per frame
@@ -64,7 +84,6 @@ public class Enemy_shooting : MonoBehaviour
 
                     if (hit.distance > minimum_distance)
                     {
-                        Debug.Log(hit.collider.gameObject.name);
                         shooting_timer = 0.0f;
                         burst_shooting_timer = 0.0f;
 
@@ -72,7 +91,7 @@ public class Enemy_shooting : MonoBehaviour
                         {
                             for (int i = 0; i < shotgun_pellet_num; i++)
                             {
-                                GameObject bullet = Instantiate(bullet_prefab, transform.position, Quaternion.identity);
+                                GameObject bullet = Instantiate(bullet_prefab, equipped_gun_sprite.transform.position, Quaternion.identity);
                                 bullet.GetComponent<bullet_movement>().SetTarget(player_ref, shotgun_accuracy);
                             }
                         }
