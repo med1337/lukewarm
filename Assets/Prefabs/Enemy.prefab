@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523336802875896}
   - component: {fileID: 212026114019098318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 198150431164292154}
   - component: {fileID: 199260627512417514}
   - component: {fileID: 114725628474334724}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114444745374301740}
   - component: {fileID: 54002631215419392}
   - component: {fileID: 65356189084605748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -7,6 +7,7 @@ public class CameraMovement : MonoBehaviour
 {
     private float horizontal;
     [SerializeField] private float Speed;
+    [SerializeField] GameObject fist;
 
     private float vertical;
 
@@ -16,6 +17,7 @@ public class CameraMovement : MonoBehaviour
     public bool exiting;
     public bool button;
     private Rigidbody rigidbody;
+    public bool can_punch = false;
     private bool holding_throwable = false;
     private PickUpScript throwable_object;
 
@@ -90,18 +92,52 @@ public class CameraMovement : MonoBehaviour
             TimeManager.Instance.MovementDetected = false;
         }
 
+        Debug.DrawLine(transform.position, (transform.position + transform.forward), Color.red);
+        
+        Vector3 punch_origin = transform.position;
+        punch_origin += transform.forward;
+        float punch_radius = 2.0f;
+        
+        Collider[] hit_colliders = Physics.OverlapSphere(punch_origin, punch_radius);
+
+        can_punch = false;
+        fist.SetActive(false);
+
+        for (int i = 0; i < hit_colliders.Length; i++)
+        { 
+            if (hit_colliders[i].gameObject.tag == "Enemy")
+            {
+                if (!holding_throwable)
+                {
+                    can_punch = true;
+
+                    fist.SetActive(true);
+
+                    return;
+                }
+            }
+            i++;
+        }
+
         if (GameManager.Instance.Throw)
         {
             if (holding_throwable)
             {
                 throwable_object.Throw();
             }
-            else
+            else if (!holding_throwable)
             {
-                //punch 
+                for (int i = 0; i < hit_colliders.Length; i++)
+                {
+                    if (hit_colliders[i].gameObject.tag == "Enemy")
+                    {
+                        float force_value = 20.0f;
+
+                        hit_colliders[i].gameObject.GetComponent<Rigidbody>().AddForce((hit_colliders[i].transform.position - this.transform.position) * force_value, ForceMode.Impulse);
+                    }
+                }
             }
-        }
-        
+        }        
     }
 
 
