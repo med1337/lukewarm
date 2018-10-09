@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114542188786016102}
   - component: {fileID: 212041552821638554}
   - component: {fileID: 135142307608902584}
+  - component: {fileID: 114823905431019876}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -35,9 +36,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1139332905820708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.454, y: 1.234375, z: -6.77}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.63999987, y: 1.05, z: 0.002}
+  m_LocalScale: {x: 0.6352416, y: 1, z: 0.63524157}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,7 +57,18 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   broken: {fileID: 21300000, guid: a997ef3ab85294c4bba9f46b657fdf76, type: 3}
   speed: 5
-  throwSpeed: 3
+  throwSpeed: 7
+--- !u!114 &114823905431019876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1139332905820708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a74b969e5947a942b9a20dc4ef60493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135142307608902584
 SphereCollider:
   m_ObjectHideFlags: 1
