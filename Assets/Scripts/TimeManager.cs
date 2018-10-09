@@ -11,19 +11,31 @@ public class TimeManager : MonoSingleton<TimeManager>
     public float TimeScale;
     public float Scale;
     public float Timer = 0.0f;
+    public float RealtimeTimer = 0.0f;
     [SerializeField] private Text Title;
     [SerializeField] private Text timerText;
+    [SerializeField] private Text reatltimeTimerText;
 
 
     private void Update()
     {
         TimeScale = UnityEngine.Time.deltaTime * Scale;
+        RealtimeTimer += Time.deltaTime;
+        var ts = TimeSpan.FromSeconds(RealtimeTimer);
+        
+        //string str = ts.Minutes + ":" + ts.Seconds + ":" + ts.Milliseconds;
+        var deb = string.Format("{0:00}:{1:00}:{2:00}",
+            ts.Minutes,
+            ts.Seconds,ts.Milliseconds);
+        reatltimeTimerText.text = deb;
         if (MovementDetected)
         {
             Timer += Time.deltaTime;
-            var ts = TimeSpan.FromSeconds(Timer);
-            //string str = ts.Minutes + ":" + ts.Seconds + ":" + ts.Milliseconds;
-            timerText.text = ts.ToString();
+             ts = TimeSpan.FromSeconds(Timer);
+            deb = string.Format("{0:00}:{1:00}:{2:00}",
+                ts.Minutes,
+                ts.Seconds, ts.Milliseconds);
+            timerText.text = deb;
             Title.color = Color.red;
         }
         else

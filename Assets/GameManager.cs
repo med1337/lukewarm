@@ -33,7 +33,7 @@ public class GameManager : MonoSingleton<GameManager>
             GameOver();
         }
     }
-
+    
 
     public void RestartGame()
     {
@@ -43,6 +43,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void GameOver()
     {
+        //todo: display gameover screen;
         Started = false;
         SceneManager.LoadScene(0);
     }
