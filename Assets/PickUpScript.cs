@@ -9,6 +9,7 @@ public class PickUpScript : MonoBehaviour {
     public float throwSpeed = 0.1f; 
     Vector3 pos;
     Vector3 offset = new Vector3(0.15f, -0.19f, 0.35f);
+    Vector3 throwDir; 
     bool pickup = false;
     bool thrown = false; 
 	// Use this for initialization
@@ -28,16 +29,19 @@ public class PickUpScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && thrown == false)
         {
             if (transform.parent != null && transform.localPosition == offset)
-                thrown = true; 
+            {
+                thrown = true;
+                throwDir = playerCam.transform.forward; 
+            }
         }
         if (!TimeManager.Instance.MovementDetected) return;
         if (thrown)
         {
             transform.parent = null;
-            transform.position += playerCam.transform.forward * Time.deltaTime * throwSpeed; // (0, 0, throwSpeed); 
+            transform.position += throwDir * Time.deltaTime * throwSpeed; // (0, 0, throwSpeed); 
         }
         else if (pickup)
         {
