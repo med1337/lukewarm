@@ -17,6 +17,7 @@ public class CameraMovement : MonoBehaviour
     public bool button;
     private Rigidbody rigidbody;
     private bool holding_throwable = false;
+    private PickUpScript throwable_object;
 
     // Use this for initialization
     void Start()
@@ -87,6 +88,18 @@ public class CameraMovement : MonoBehaviour
         {
             TimeManager.Instance.Scale = 0;
             TimeManager.Instance.MovementDetected = false;
+        }
+
+        if (GameManager.Instance.Throw)
+        {
+            if (holding_throwable)
+            {
+                throwable_object.Throw();
+            }
+            else
+            {
+                //punch 
+            }
         }
         
     }
@@ -177,13 +190,17 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    public void UpdateThrowingObject(bool _object)
+    public void UpdateThrowingObject(bool _object, PickUpScript _object_script)
     {
         holding_throwable = _object;
+
+        throwable_object = _object_script;
     }
 
     public bool GetThrowingObject()
     {
+        throwable_object = null;
+
         return holding_throwable;
     }
 };

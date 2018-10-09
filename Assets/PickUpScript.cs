@@ -36,7 +36,7 @@ public class PickUpScript : MonoBehaviour
             {
                 pickup = true;
 
-                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(true);
+                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(true, this);
             }
         }
 
@@ -56,20 +56,7 @@ public class PickUpScript : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && thrown == false)
-        {
-            if (transform.parent != null && transform.localPosition == offset)
-            {
-                thrown = true;
-                throwDir = playerCam.transform.forward;
-                SphereCollider myCollider = transform.GetComponent<SphereCollider>();
-                myCollider.radius = 0.1f;
-                transform.position += (throwDir / 2);
-
-                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(false);
-            }
-        }
+    {        
         if (!TimeManager.Instance.MovementDetected) return;
         if (thrown)
         {
@@ -81,6 +68,23 @@ public class PickUpScript : MonoBehaviour
             transform.parent = playerCam.transform;
             float step = speed * Time.deltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, offset, step);
+        }
+    }
+
+    public void Throw()
+    {
+        if (thrown == false)
+        {
+            if (transform.parent != null && transform.localPosition == offset)
+            {
+                thrown = true;
+                throwDir = playerCam.transform.forward;
+                SphereCollider myCollider = transform.GetComponent<SphereCollider>();
+                myCollider.radius = 0.1f;
+                transform.position += (throwDir / 2);
+
+                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(false, this);
+            }
         }
     }
 }
