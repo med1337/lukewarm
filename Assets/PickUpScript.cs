@@ -25,12 +25,26 @@ public class PickUpScript : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.GetComponent<bullet_movement>())
+        {
+            return;
+        }
+
         if (col == playerCam.GetComponent<BoxCollider>())
             pickup = true;
+
         else if (thrown)
         {
             SpriteRenderer myRenderer = transform.GetComponent<SpriteRenderer>();
             myRenderer.sprite = broken;
+
+            if (col.gameObject.tag == "Enemy")
+            {
+                float force_value = 20.0f;
+                col.gameObject.GetComponent<Rigidbody>().AddForce((col.transform.position - transform.position) * force_value, ForceMode.Impulse);
+            }
+            
+            Destroy(this.gameObject, 0.2f);
         }
     }
 
