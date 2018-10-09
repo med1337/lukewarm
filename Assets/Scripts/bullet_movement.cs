@@ -12,11 +12,12 @@ public class bullet_movement : MonoBehaviour {
     private float death_timer = 0;
     private float lifespan = 20.0f;
     private float max_lifespan = 30.0f;
-
+    private Rigidbody mRigidbody;
     private LineRenderer lr;
 	// Use this for initialization
 	void Start ()
 	{
+	    mRigidbody = GetComponent<Rigidbody>();
         lr = GetComponent<LineRenderer>();
         lr.SetPosition(0, transform.position);
         lr.SetPosition(1, transform.position);
@@ -53,8 +54,9 @@ public class bullet_movement : MonoBehaviour {
             }
 
             float step = max_speed * Time.deltaTime;
-
-            transform.position += transform.forward * (Time.deltaTime * max_speed);
+            var newpos = transform.position;
+            newpos += transform.forward * (Time.deltaTime * max_speed);
+            mRigidbody.MovePosition(newpos);
         }
 
         if (dead)
@@ -89,6 +91,7 @@ public class bullet_movement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Enemy")
         {
             return;
@@ -102,7 +105,8 @@ public class bullet_movement : MonoBehaviour {
     }
 
     private void KillBullet()
-    {        
+    {
+        mRigidbody.isKinematic = true;
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
 
         dead = true;

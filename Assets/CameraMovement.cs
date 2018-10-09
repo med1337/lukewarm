@@ -39,6 +39,15 @@ public class CameraMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal") * Speed;
         vertical = Input.GetAxisRaw("Vertical") * Speed;
 
+        if (vertical > 0)
+        {
+            transform.position += transform.forward * Time.deltaTime;
+        }
+        else if (vertical < 0)
+
+        {
+            transform.position -= transform.forward * Time.deltaTime;
+        }
 
         if (!button)
         {
@@ -46,24 +55,9 @@ public class CameraMovement : MonoBehaviour
                 transform.position += transform.right * Time.deltaTime;
             else if (horizontal < 0)
                 transform.position -= transform.right * Time.deltaTime;
-
-            if (vertical > 0)
-            {
-                transform.position += transform.forward * Time.deltaTime;
-            }
-            else if (vertical < 0)
-
-            {
-                transform.position -= transform.forward * Time.deltaTime;
-            }
         }
         else
         {
-            if (vertical > 0)
-            {
-                //StartCoroutine(MoveOut());
-            }
-
             if (horizontal > 0)
             {
                 transform.Rotate(transform.up, 5);
@@ -75,16 +69,24 @@ public class CameraMovement : MonoBehaviour
         }
 
 
-        if ((horizontal == 0 && vertical == 0) || button)
+        if (horizontal != 0 || vertical != 0)
         {
-            Debug.Log(button + ", " + horizontal + ", " + vertical);
-            TimeManager.Instance.Scale = 0;
-            TimeManager.Instance.MovementDetected = false;
+            //Debug.Log(button + ", " + horizontal + ", " + vertical);
+            if (button && vertical==0)
+            {
+                TimeManager.Instance.Scale = 0;
+                TimeManager.Instance.MovementDetected = false;
+            }
+            else
+            {
+                TimeManager.Instance.MovementDetected = true;
+                TimeManager.Instance.Scale = 1;
+            }
         }
         else
         {
-            TimeManager.Instance.MovementDetected = true;
-            TimeManager.Instance.Scale = 1;
+            TimeManager.Instance.Scale = 0;
+            TimeManager.Instance.MovementDetected = false;
         }
 
         button = Input.GetKey(KeyCode.Return);

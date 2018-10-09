@@ -22,6 +22,29 @@ public class GameManager : MonoSingleton<GameManager>
         {
             StartGame();
         }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            StartGame();
+        }
+
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            GameOver();
+        }
+    }
+
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+
+    public void GameOver()
+    {
+        Started = false;
+        SceneManager.LoadScene(0);
     }
 
 
