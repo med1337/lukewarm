@@ -10,8 +10,8 @@ public class bullet_movement : MonoBehaviour {
 
     private float timer = 0;
     private float death_timer = 0;
-    private float lifespan = 1.0f;
-    private float max_lifespan = 5.0f;
+    private float lifespan = 20.0f;
+    private float max_lifespan = 30.0f;
 
     private LineRenderer lr;
 	// Use this for initialization
@@ -38,7 +38,7 @@ public class bullet_movement : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-
+        
         if (fired)
         {
             lr.SetPosition(0, transform.position);
@@ -69,10 +69,10 @@ public class bullet_movement : MonoBehaviour {
             }
             else
             {
-                Destroy(this.gameObject);
+                // Destroy(this.gameObject);
             }
         }
-	}
+    }
 
     public void SetTarget(Transform _target, float _accuracy)
     {
@@ -87,22 +87,25 @@ public class bullet_movement : MonoBehaviour {
         fired = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             return;
         }
+        else if (collision.gameObject.tag == "MainCamera")
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
 
-        KillBullet();
-        fired = false;
+        KillBullet();        
     }
 
     private void KillBullet()
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    {        
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
 
         dead = true;
+        fired = false;
     }
 }
