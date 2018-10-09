@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1296582108187056}
+  m_RootGameObject: {fileID: 1528912440413562}
   m_IsPrefabAsset: 1
---- !u!1 &1013932592787866
+--- !u!1 &1528912440413562
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4049283187450998}
-  - component: {fileID: 114474351471270976}
-  - component: {fileID: 114758465993622714}
+  - component: {fileID: 4698816881320976}
+  - component: {fileID: 114562405896409370}
+  - component: {fileID: 114586052567101366}
   m_Layer: 0
   m_Name: ReplayManager
   m_TagString: Untagged
@@ -28,54 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1296582108187056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4995090992721316}
-  m_Layer: 0
-  m_Name: ReplayCommon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4049283187450998
+--- !u!4 &4698816881320976
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013932592787866}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1528912440413562}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4995090992721316}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4995090992721316
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1296582108187056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4049283187450998}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114474351471270976
+--- !u!114 &114562405896409370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013932592787866}
+  m_GameObject: {fileID: 1528912440413562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1681009243, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
@@ -88,12 +59,12 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a, type: 2}
   - {fileID: 1139332905820708, guid: ec36f879ca7c0ab4c932ddfe0434f2d3, type: 2}
---- !u!114 &114758465993622714
+--- !u!114 &114586052567101366
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1013932592787866}
+  m_GameObject: {fileID: 1528912440413562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -751053920, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
@@ -102,7 +73,7 @@ MonoBehaviour:
   replayIdentity:
     id: -1
   fileDirectory: 
-  fileName: superh.replay
+  fileName: superh1.replay
   overwriteExistingFiles: 1
   chunkCacheSize: 16
-  logDebugMessages: 0
+  logDebugMessages: 1

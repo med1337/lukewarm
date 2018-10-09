@@ -169,7 +169,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (collision.rigidbody.gameObject.tag == "Enemy" || collision.rigidbody.gameObject.tag == "Bullet")
             {
-                GameManager.Instance.GameOver();
+                GameManager.Instance.RestartLevel();
             }
         }
     }

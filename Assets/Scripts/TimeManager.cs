@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,16 @@ public class TimeManager : MonoSingleton<TimeManager>
     [SerializeField] private Text timerText;
     [SerializeField] private Text reatltimeTimerText;
 
-
-    private void Start()
+    
+    public IEnumerator Load()
     {
-        ReplayManager.ForceAwake();
-        
+        ResetTimers();
+        yield return null;
+        Debug.Log(ReplayManager.IsDisposing);
+        Debug.Log(ReplayManager.Target.IsReplaying);
+        Debug.Log(ReplayManager.Target.IsReplaying);
+        Debug.Log(ReplayManager.Target.IsInvoking());
+        ReplayManager.BeginRecording(true);
     }
 
 

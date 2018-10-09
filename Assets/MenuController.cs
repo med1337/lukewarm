@@ -9,6 +9,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] public Text luke;
     [SerializeField] public Text warm;
     [SerializeField] public Text start;
+    [SerializeField] public Image img;
 
     private Text current_text;
     private float start_timer = 0.0f;

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UltimateReplay;
+using UltimateReplay.Storage;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public int currentLevel;
     public bool Started = false;
     public bool Hold = false;
     public bool Throw = false;
@@ -30,17 +32,17 @@ public class GameManager : MonoSingleton<GameManager>
         }
         if (Input.GetKeyUp(KeyCode.Return) && !Started)
         {
-            StartGame();
+            StartGame(1);
         }
 
         if (Input.GetKeyUp(KeyCode.R))
         {
-            StartGame();
+            StartGame(currentLevel);
         }
 
         if (Input.GetKeyUp(KeyCode.P))
         {
-            GameOver();
+            LevelComplete();
         }
 
         pressed = Input.GetKey(KeyCode.Return);
@@ -74,30 +76,60 @@ public class GameManager : MonoSingleton<GameManager>
     }
     
 
-    public void RestartGame()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(1);
     }
 
 
-    public void GameOver()
+    public void LevelComplete()
     {
-        UltimateReplay.ReplayManager.StopRecording();
+        ReplayManager.StopRecording();
         ReplayManager.BeginPlayback();
         Time.timeScale = 2;
         TimeManager.Instance.ResetTimers();
         mc.gameObject.SetActive(true);
-        mc.start.text += "\nLEVEL 2";
+        mc.img.gameObject.SetActive(false);
+        mc.start.text = "PRESS BUTTON TO START\nLEVEL " + (currentLevel+1);
+        StartCoroutine(WaitForReplayFinish());
         //todo: display gameover screen;
         //Started = false;
         //SceneManager.LoadScene(0);
     }
 
 
-    public void StartGame()
+    public IEnumerator WaitForReplayFinish()
     {
+        while (ReplayManager.IsReplaying)
+        {
+            Debug.Log("replaying");
+            yield return null;
+        }
+        yield return new WaitForSeconds(2f);
+
+        //ReplayManager.Target.Reset();
+        if (currentLevel != 3)
+        {
+            StartGame(currentLevel+1);
+            StartCoroutine(TimeManager.Instance.Load());
+        }
+        else
+        {
+            Destroy(ReplayManager.Instance);
+            mc.gameObject.SetActive(true);
+            mc.img.gameObject.SetActive(true);
+            SceneManager.LoadScene(0);
+        }
+    }
+
+
+    public void StartGame(int level)
+    {
+        Time.timeScale = 1;
+        Debug.Log(level);
+        currentLevel = level ;
         Started = true;
-        SceneManager.LoadScene("3d");
+        SceneManager.LoadScene(level);
         mc.gameObject.SetActive(false);
     }
 }

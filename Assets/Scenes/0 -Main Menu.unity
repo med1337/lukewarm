@@ -296,6 +296,17 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114031454442187732, guid: c42c2ef7f671a0143b41f1466725405a,
+        type: 2}
+      propertyPath: img
+      value: 
+      objectReference: {fileID: 1518360963}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c42c2ef7f671a0143b41f1466725405a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1518360963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114041023034764558, guid: c42c2ef7f671a0143b41f1466725405a,
+    type: 2}
+  m_PrefabInternal: {fileID: 733903426}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
