@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
     public bool Started = false;
+    public bool Hold = false;
+    public bool Throw = false;
 
+    private float holdTimer = 0.0f;
 
+    private bool pressed = false;
     // Use this for initialization
     void Start()
     {
@@ -18,6 +22,12 @@ public class GameManager : MonoSingleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        if (pressed)
+        {
+            holdTimer += Time.deltaTime;
+            if(holdTimer>0.2f)
+            Hold = true;
+        }
         if (Input.anyKeyDown && !Started)
         {
             StartGame();
@@ -32,6 +42,35 @@ public class GameManager : MonoSingleton<GameManager>
         {
             GameOver();
         }
+
+        pressed = Input.GetKey(KeyCode.Return);
+        Throw = Input.GetKeyUp(KeyCode.Return);
+        if (Throw && Hold)
+        {
+            holdTimer = 0;
+               Throw = false;
+            pressed = false;
+            Hold = false;
+        }
+        else if (Throw)
+        {
+            holdTimer = 0;
+               pressed = false;
+            Hold = false;
+        }
+
+       
+        if (Throw)
+        {
+            Debug.Log("Throw");
+
+        }
+
+        if (Hold)
+        {
+            Debug.Log("Hold");
+        }
+        
     }
     
 

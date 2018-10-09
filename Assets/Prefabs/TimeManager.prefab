@@ -273,10 +273,10 @@ MonoBehaviour:
   TimeScale: 0
   Scale: 0
   Timer: 0
-  ActualTimer: 0
+  RealtimeTimer: 0
   Title: {fileID: 114098124569501526}
   timerText: {fileID: 114967598485063840}
-  actualTimerText: {fileID: 114426043196168090}
+  reatltimeTimerText: {fileID: 114426043196168090}
 --- !u!114 &114967598485063840
 MonoBehaviour:
   m_ObjectHideFlags: 1
