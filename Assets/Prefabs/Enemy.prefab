@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523336802875896}
   - component: {fileID: 212026114019098318}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 198150431164292154}
   - component: {fileID: 199260627512417514}
   - component: {fileID: 114725628474334724}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Death Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114444745374301740}
   - component: {fileID: 54002631215419392}
   - component: {fileID: 65356189084605748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961249346079884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.210968, y: 0.89, z: 5.892484}
+  m_LocalPosition: {x: -18.210968, y: 1.25, z: 5.892484}
   m_LocalScale: {x: 10, y: 10, z: 5}
   m_Children:
   - {fileID: 4683851054719478}
@@ -169,15 +169,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542aa07c26632a54a9328eee57710733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipped_gun: 1
+  equipped_gun: 2
   bullet_prefab: {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a,
     type: 2}
   vision_radius: 20
-  shooting_delay: 1
-  burst_shooting_delay: 0.4
+  shooting_delay: 5
+  burst_shooting_delay: 1
   pistol_accuracy: 0.3
   rifle_accuracy: 0.5
   shotgun_accuracy: 1
+  pistol_sprite: {fileID: 21300000, guid: ee4af2ba1236ef5409559da0b54bc976, type: 3}
+  rifle_sprite: {fileID: 21300000, guid: 5bcac7714093e984aa8ddddacd7e5c65, type: 3}
+  shotgun_sprite: {fileID: 21300000, guid: 31455ec8e09f99949949740a279ce3d0, type: 3}
+  equipped_gun_sprite: {fileID: 1601329499117190}
 --- !u!114 &114851312438931426
 MonoBehaviour:
   m_ObjectHideFlags: 1

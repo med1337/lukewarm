@@ -623,6 +623,18 @@ Prefab:
       propertyPath: equipped_gun
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1961249346079884, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830699277242238, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601329499117190, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}
   m_IsPrefabAsset: 0
