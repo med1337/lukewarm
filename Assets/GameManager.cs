@@ -9,9 +9,8 @@ public class GameManager : MonoSingleton<GameManager>
     public bool Started = false;
     public bool Hold = false;
     public bool Throw = false;
-
     private float holdTimer = 0.0f;
-
+    public MenuController mc;
     private bool pressed = false;
     // Use this for initialization
     void Start()
@@ -29,7 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
             if(holdTimer>0.2f)
             Hold = true;
         }
-        if (Input.anyKeyDown && !Started)
+        if (Input.GetKeyUp(KeyCode.Return) && !Started)
         {
             StartGame();
         }
@@ -86,6 +85,9 @@ public class GameManager : MonoSingleton<GameManager>
         UltimateReplay.ReplayManager.StopRecording();
         ReplayManager.BeginPlayback();
         Time.timeScale = 2;
+        TimeManager.Instance.ResetTimers();
+        mc.gameObject.SetActive(true);
+        mc.start.text += "\nLEVEL 2";
         //todo: display gameover screen;
         //Started = false;
         //SceneManager.LoadScene(0);
@@ -95,6 +97,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartGame()
     {
         Started = true;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("3d");
+        mc.gameObject.SetActive(false);
     }
 }

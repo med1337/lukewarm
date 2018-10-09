@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UltimateReplay;
+using UltimateReplay.Core;
+using UltimateReplay.Storage;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +23,14 @@ public class TimeManager : MonoSingleton<TimeManager>
     private void Start()
     {
         ReplayManager.ForceAwake();
+        
+    }
+
+
+    public void ResetTimers()
+    {
+        RealtimeTimer = 0;
+        Timer = 0;
     }
 
     private void Update()

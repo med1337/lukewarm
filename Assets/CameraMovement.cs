@@ -88,7 +88,6 @@ public class CameraMovement : MonoBehaviour
             TimeManager.Instance.Scale = 0;
             TimeManager.Instance.MovementDetected = false;
         }
-        
     }
 
 
@@ -152,10 +151,12 @@ public class CameraMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.rigidbody.gameObject.tag+ " : "+ collision.rigidbody.gameObject.name);
-        if (collision.rigidbody.gameObject.tag == "Enemy" || collision.rigidbody.gameObject.tag == "Bullet")
+        if (collision.rigidbody != null)
         {
-            GameManager.Instance.GameOver();
+            if (collision.rigidbody.gameObject.tag == "Enemy" || collision.rigidbody.gameObject.tag == "Bullet")
+            {
+                GameManager.Instance.GameOver();
+            }
         }
     }
 

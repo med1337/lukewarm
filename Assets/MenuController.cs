@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] Text luke;
-    [SerializeField] Text warm;
-    [SerializeField] Text start;
+    [SerializeField] public Text luke;
+    [SerializeField] public Text warm;
+    [SerializeField] public Text start;
 
     private Text current_text;
     private float start_timer = 0.0f;
