@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -13,15 +14,16 @@ public class CameraMovement : MonoBehaviour
 
     public bool blockInput = false;
     public bool exiting;
-
+    public bool button;
     private Rigidbody rigidbody;
+
 
     // Use this for initialization
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Application.targetFrameRate = 15;
-        Screen.SetResolution(190,162,FullScreenMode.FullScreenWindow);
+        //Application.targetFrameRate = 15;
+        Screen.SetResolution(190, 162, FullScreenMode.FullScreenWindow);
     }
 
 
@@ -29,13 +31,19 @@ public class CameraMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (blockInput) return;
+    }
 
+
+    void Update()
+    {
         horizontal = Input.GetAxisRaw("Horizontal") * Speed;
         vertical = Input.GetAxisRaw("Vertical") * Speed;
-        if (!intersection)
+
+
+        if (!button)
         {
             if (horizontal > 0)
-                transform.position += transform.right * Time.deltaTime ;
+                transform.position += transform.right * Time.deltaTime;
             else if (horizontal < 0)
                 transform.position -= transform.right * Time.deltaTime;
 
@@ -53,31 +61,33 @@ public class CameraMovement : MonoBehaviour
         {
             if (vertical > 0)
             {
-                StartCoroutine(MoveOut());
+                //StartCoroutine(MoveOut());
             }
 
             if (horizontal > 0)
             {
-                StartCoroutine(Rotate(true));
+                transform.Rotate(transform.up, 5);
             }
             else if (horizontal < 0)
             {
-                StartCoroutine(Rotate(false));
+                transform.Rotate(transform.up, -5);
             }
         }
 
-        if (horizontal != 0 || vertical != 0)
-        {
 
-            TimeManager.Instance.MovementDetected = true;
-            TimeManager.Instance.Scale = 1;
-        }
-        else
+        if ((horizontal == 0 && vertical == 0) || button)
         {
-
+            Debug.Log(button + ", " + horizontal + ", " + vertical);
             TimeManager.Instance.Scale = 0;
             TimeManager.Instance.MovementDetected = false;
         }
+        else
+        {
+            TimeManager.Instance.MovementDetected = true;
+            TimeManager.Instance.Scale = 1;
+        }
+
+        button = Input.GetKey(KeyCode.Return);
     }
 
 
@@ -100,7 +110,8 @@ public class CameraMovement : MonoBehaviour
 
             rot = (int) (transform.rotation.eulerAngles.y);
         }
-        transform.rotation.Set(0,Mathf.RoundToInt(transform.rotation.eulerAngles.y),0,0);
+
+        transform.rotation.Set(0, Mathf.RoundToInt(transform.rotation.eulerAngles.y), 0, 0);
         blockInput = false;
 
         yield return null;

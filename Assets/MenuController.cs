@@ -1,28 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour {
-
+public class MenuController : MonoBehaviour
+{
     [SerializeField] Text luke;
     [SerializeField] Text warm;
     [SerializeField] Text start;
 
     private Text current_text;
     private float start_timer = 0.0f;
-    private float start_delay = 0.3f;
+    [SerializeField] private float start_delay = 0.3f;
+
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        Application.targetFrameRate = 10;
         current_text = luke;
         current_text.enabled = true;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+    
+
+
+    // Update is called once per frame
+    void Update()
     {
         start_timer += Time.deltaTime;
 
@@ -33,7 +36,7 @@ public class MenuController : MonoBehaviour {
             start.enabled = !start.enabled;
         }
 
-        current_text.fontSize += 1;
+        current_text.fontSize += 5;
 
         if (current_text.fontSize > 299)
         {
@@ -51,5 +54,5 @@ public class MenuController : MonoBehaviour {
 
             current_text.enabled = true;
         }
-	}
+    }
 }
