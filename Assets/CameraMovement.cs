@@ -25,6 +25,7 @@ public class CameraMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         //Application.targetFrameRate = 15;
         Screen.SetResolution(190, 162, FullScreenMode.FullScreenWindow);
+        Speed = 2; 
     }
 
 
@@ -42,20 +43,20 @@ public class CameraMovement : MonoBehaviour
 
         if (vertical > 0)
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += transform.forward * Time.deltaTime * Speed;
         }
         else if (vertical < 0)
 
         {
-            transform.position -= transform.forward * Time.deltaTime;
+            transform.position -= transform.forward * Time.deltaTime * Speed;
         }
 
         if (!GameManager.Instance.Hold)
         {
             if (horizontal > 0)
-                transform.position += transform.right * Time.deltaTime;
+                transform.position += transform.right * Time.deltaTime * Speed;
             else if (horizontal < 0)
-                transform.position -= transform.right * Time.deltaTime;
+                transform.position -= transform.right * Time.deltaTime * Speed;
         }
         else
         {
