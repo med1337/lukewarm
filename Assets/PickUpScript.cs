@@ -42,13 +42,15 @@ public class PickUpScript : MonoBehaviour
 
         else if (thrown)
         {
+            thrown = false;
+
             SpriteRenderer myRenderer = transform.GetComponent<SpriteRenderer>();
             myRenderer.sprite = broken;
 
             if (col.gameObject.tag == "Enemy")
             {
                 float force_value = 20.0f;
-                col.gameObject.GetComponent<Rigidbody>().AddForce((col.transform.position - transform.position) * force_value, ForceMode.Impulse);
+                col.gameObject.GetComponent<Rigidbody>().AddForce((col.transform.position - playerCam.transform.position) * force_value, ForceMode.Impulse);
             }
 
             Destroy(this.gameObject, 0.2f);
