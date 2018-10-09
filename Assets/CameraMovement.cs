@@ -201,9 +201,12 @@ public class CameraMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bullet")
+        if (collision.rigidbody != null)
         {
-            GameManager.Instance.GameOver();
+            if (collision.rigidbody.gameObject.tag == "Enemy" || collision.rigidbody.gameObject.tag == "Bullet")
+            {
+                GameManager.Instance.GameOver();
+            }
         }
     }
 
