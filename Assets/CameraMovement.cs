@@ -112,8 +112,6 @@ public class CameraMovement : MonoBehaviour
                     can_punch = true;
 
                     fist.SetActive(true);
-
-                    return;
                 }
             }
             i++;
@@ -127,13 +125,19 @@ public class CameraMovement : MonoBehaviour
             }
             else if (!holding_throwable)
             {
-                for (int i = 0; i < hit_colliders.Length; i++)
+                if (can_punch)
                 {
-                    if (hit_colliders[i].gameObject.tag == "Enemy")
-                    {
-                        float force_value = 20.0f;
+                    Debug.Log("punch");
 
-                        hit_colliders[i].gameObject.GetComponent<Rigidbody>().AddForce((hit_colliders[i].transform.position - this.transform.position) * force_value, ForceMode.Impulse);
+
+                    for (int i = 0; i < hit_colliders.Length; i++)
+                    {
+                        if (hit_colliders[i].gameObject.tag == "Enemy")
+                        {
+                            float force_value = 20.0f;
+
+                            hit_colliders[i].gameObject.GetComponent<Rigidbody>().AddForce((hit_colliders[i].gameObject.transform.position - this.transform.position) * force_value, ForceMode.Impulse);
+                        }
                     }
                 }
             }
