@@ -31,7 +31,14 @@ public class PickUpScript : MonoBehaviour
         }
 
         if (col == playerCam.GetComponent<BoxCollider>())
-            pickup = true;
+        {
+            if (!playerCam.gameObject.GetComponent<CameraMovement>().GetThrowingObject())
+            {
+                pickup = true;
+
+                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(true);
+            }
+        }
 
         else if (thrown)
         {
@@ -43,7 +50,7 @@ public class PickUpScript : MonoBehaviour
                 float force_value = 20.0f;
                 col.gameObject.GetComponent<Rigidbody>().AddForce((col.transform.position - transform.position) * force_value, ForceMode.Impulse);
             }
-            
+
             Destroy(this.gameObject, 0.2f);
         }
     }
@@ -58,6 +65,9 @@ public class PickUpScript : MonoBehaviour
                 throwDir = playerCam.transform.forward;
                 SphereCollider myCollider = transform.GetComponent<SphereCollider>();
                 myCollider.radius = 0.1f;
+                transform.position += (throwDir / 2);
+
+                playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(false);
             }
         }
         if (!TimeManager.Instance.MovementDetected) return;

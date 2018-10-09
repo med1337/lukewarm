@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
     public bool exiting;
     public bool button;
     private Rigidbody rigidbody;
-
+    private bool holding_throwable = false;
 
     // Use this for initialization
     void Start()
@@ -167,5 +167,15 @@ public class CameraMovement : MonoBehaviour
         {
             intersection = false;
         }
+    }
+
+    public void UpdateThrowingObject(bool _object)
+    {
+        holding_throwable = _object;
+    }
+
+    public bool GetThrowingObject()
+    {
+        return holding_throwable;
     }
 };
