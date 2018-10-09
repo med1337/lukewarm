@@ -128,9 +128,6 @@ public class CameraMovement : MonoBehaviour
             {
                 if (can_punch)
                 {
-                    Debug.Log("punch");
-
-
                     for (int i = 0; i < hit_colliders.Length; i++)
                     {
                         if (hit_colliders[i].gameObject.tag == "Enemy")
