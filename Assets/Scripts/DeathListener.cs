@@ -6,7 +6,6 @@ public class DeathListener : MonoBehaviour {
 
     [SerializeField] float max_speed = 5.0f;
     [SerializeField] ParticleSystem death_particles;
-
     private bool dead = false;
 
 	// Use this for initialization
@@ -23,7 +22,7 @@ public class DeathListener : MonoBehaviour {
                 dead = true;
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider>().enabled = false;
-
+                
                 death_particles.Play();                
             }            
         }

@@ -99,6 +99,8 @@ public class bullet_movement : MonoBehaviour {
         else if (collision.gameObject.tag == "MainCamera")
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameObject soundMaker = GameObject.Find("AudioPlayer");
+            soundMaker.GetComponent<audioPlayer>().PlaySound(2);
         }
 
         KillBullet();        
