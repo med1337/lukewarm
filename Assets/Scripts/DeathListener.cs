@@ -23,7 +23,7 @@ public class DeathListener : MonoBehaviour {
                 dead = true;
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider>().enabled = false;
-
+                
                 death_particles.Play();                
             }            
         }

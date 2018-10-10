@@ -237,13 +237,18 @@ public class CameraMovement : MonoBehaviour
     {
         holding_throwable = _object;
 
-        throwable_object = _object_script;
+        if (holding_throwable)
+        {
+            throwable_object = _object_script;
+        }
+        else
+        {
+            throwable_object = null;
+        }
     }
 
     public bool GetThrowingObject()
     {
-        throwable_object = null;
-
         return holding_throwable;
     }
 };

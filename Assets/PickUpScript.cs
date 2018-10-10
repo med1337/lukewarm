@@ -9,6 +9,7 @@ public class PickUpScript : MonoBehaviour
     public Sprite broken;
     public float speed = 5;
     public float throwSpeed = 0.1f;
+    GameObject soundmaker; 
     Vector3 pos;
     Vector3 offset = new Vector3(0.15f, -0.19f, 0.35f);
     Vector3 throwDir;
@@ -17,7 +18,7 @@ public class PickUpScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        soundmaker = GameObject.Find("AudioPlayer"); 
         pos = transform.position;
         //grabPos = playerCam.transform.position + offset;
     }
@@ -51,6 +52,7 @@ public class PickUpScript : MonoBehaviour
             {
                 float force_value = 20.0f;
                 col.gameObject.GetComponent<Rigidbody>().AddForce((col.transform.position - playerCam.transform.position) * force_value, ForceMode.Impulse);
+                soundmaker.GetComponent<audioPlayer>().PlaySound(1);
             }
 
             Destroy(this.gameObject, 0.2f);
@@ -86,6 +88,7 @@ public class PickUpScript : MonoBehaviour
                 transform.position += (throwDir / 2);
 
                 playerCam.gameObject.GetComponent<CameraMovement>().UpdateThrowingObject(false, this);
+                soundmaker.GetComponent<audioPlayer>().PlaySound(0);
             }
         }
     }
