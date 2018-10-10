@@ -118,7 +118,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(currentLevel);
     }
 
 
