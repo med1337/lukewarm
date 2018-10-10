@@ -46,17 +46,17 @@ public class TimeManager : MonoSingleton<TimeManager>
         var ts = TimeSpan.FromSeconds(RealtimeTimer);
         
         //string str = ts.Minutes + ":" + ts.Seconds + ":" + ts.Milliseconds;
-        var deb = string.Format("{0:00}:{1:00}:{2:000}",
+        var deb = string.Format("{0:00}:{1:00}",
             ts.Minutes,
-            ts.Seconds,ts.Milliseconds);
+            ts.Seconds);
         reatltimeTimerText.text = deb;
         if (MovementDetected)
         {
             Timer += Time.deltaTime;
              ts = TimeSpan.FromSeconds(Timer);
-            deb = string.Format("{0:00}:{1:00}:{2:000}",
+            deb = string.Format("{0:00}:{1:00}",
                 ts.Minutes,
-                ts.Seconds, ts.Milliseconds);
+                ts.Seconds);
             timerText.text = deb;
             Title.color = Color.red;
         }

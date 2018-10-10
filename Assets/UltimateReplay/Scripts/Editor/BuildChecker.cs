@@ -15,7 +15,7 @@ public class BuildChecker : IPreprocessBuild
     // Methods
     public void OnPreprocessBuild(BuildTarget target, string path)
     {
-        Debug.LogError("The trial version of UltimateReplay cannot be built! Please upgrade to the full version to build your game.");
+        //Debug.LogError("The trial version of UltimateReplay cannot be built! Please upgrade to the full version to build your game.");
     }
 }
 #endif

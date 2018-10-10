@@ -14,6 +14,8 @@ public class MenuController : MonoBehaviour
     private Text current_text;
     private float start_timer = 0.0f;
     [SerializeField] private float start_delay = 0.3f;
+    private float tmr = 0.0f;
+    [SerializeField] private float dl = 2.0f;
 
 
     // Use this for initialization
@@ -28,6 +30,7 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tmr += Time.deltaTime;
         start_timer += Time.deltaTime;
 
         if (start_timer > start_delay)
@@ -37,23 +40,28 @@ public class MenuController : MonoBehaviour
             start.enabled = !start.enabled;
         }
 
-        current_text.fontSize += 5;
-
-        if (current_text.fontSize > 299)
+        if (tmr > dl)
         {
-            current_text.enabled = false;
-            current_text.fontSize = 200;
+            tmr = 0.0f;
+            current_text.fontSize += 25;
 
-            if (current_text.text == luke.text)
+            if (current_text.fontSize > 299)
             {
-                current_text = warm;
-            }
-            else
-            {
-                current_text = luke;
-            }
+                current_text.enabled = false;
+                current_text.fontSize = 200;
 
-            current_text.enabled = true;
+                if (current_text.text == luke.text)
+                {
+                    current_text = warm;
+                }
+                else
+                {
+                    current_text = luke;
+                }
+
+                current_text.enabled = true;
+            }
         }
+       
     }
 }

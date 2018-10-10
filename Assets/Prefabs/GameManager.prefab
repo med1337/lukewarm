@@ -145,7 +145,9 @@ MonoBehaviour:
   luke: {fileID: 114851073138578480}
   warm: {fileID: 114167125868500990}
   start: {fileID: 114726306278190102}
+  img: {fileID: 114041023034764558}
   start_delay: 0.8
+  dl: 0.3
 --- !u!114 &114041023034764558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,10 +241,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnLoad: 0
+  currentLevel: 0
   Started: 0
   Hold: 0
   Throw: 0
+  Replaying: 0
   mc: {fileID: 114031454442187732}
+  enemies: []
 --- !u!114 &114578697486156906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,6 +513,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -65}
+  m_AnchoredPosition: {x: 0, y: 58}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}

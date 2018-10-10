@@ -16,7 +16,10 @@ public class GameManager : MonoSingleton<GameManager>
     private float holdTimer = 0.0f;
     public MenuController mc;
     public List<DeathListener> enemies = new List<DeathListener>();
+
     private bool pressed = false;
+
+
     // Use this for initialization
     void Start()
     {
@@ -24,11 +27,13 @@ public class GameManager : MonoSingleton<GameManager>
         SceneManager.sceneLoaded += onLoaded;
     }
 
+
     private void onLoaded(Scene arg0, LoadSceneMode arg1)
     {
         if (arg0.buildIndex != 0)
         {
-            var x =GameObject.FindGameObjectsWithTag("Enemy");
+            mc.gameObject.SetActive(false);
+            var x = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var o in x)
             {
                 enemies.Add(o.GetComponent<DeathListener>());
@@ -39,11 +44,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void CheckWinState()
     {
-        if (enemies.Count==0)
+        if (enemies.Count == 0)
         {
             return;
         }
-        bool win = enemies[0].dead;
+
+        bool win = false;
+        if (enemies != null)
+            win = enemies[0].dead;
         for (var index = 1; index < enemies.Count; index++)
         {
             var deathListener = enemies[index];
@@ -58,17 +66,19 @@ public class GameManager : MonoSingleton<GameManager>
         enemies = new List<DeathListener>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if(Started && !Replaying)
+        if (Started && !Replaying)
             CheckWinState();
         if (pressed)
         {
             holdTimer += Time.deltaTime;
-            if(holdTimer>0.2f)
-            Hold = true;
+            if (holdTimer > 0.2f)
+                Hold = true;
         }
+
         if (Input.GetKeyUp(KeyCode.Return) && !Started)
         {
             StartGame(1);
@@ -90,34 +100,40 @@ public class GameManager : MonoSingleton<GameManager>
         if (Throw && Hold)
         {
             holdTimer = 0;
-               Throw = false;
+            Throw = false;
             pressed = false;
             Hold = false;
         }
         else if (Throw)
         {
             holdTimer = 0;
-               pressed = false;
+            pressed = false;
             Hold = false;
         }
 
-       
+
         if (Throw)
         {
             Debug.Log("Throw");
-
         }
 
         if (Hold)
         {
             Debug.Log("Hold");
         }
-        
     }
-    
+
 
     public void RestartLevel()
     {
+        StartCoroutine(RRL());
+    }
+
+
+    public IEnumerator RRL()
+    {
+        yield return new WaitForSeconds(1.0f);
+
         SceneManager.LoadScene(currentLevel);
     }
 
@@ -134,8 +150,9 @@ public class GameManager : MonoSingleton<GameManager>
         mc.start.text = "PRESS BUTTON TO START";
         if (currentLevel != 3)
         {
-            mc.start.text += "\nLEVEL " + (currentLevel+1);
+            mc.start.text += "\nLEVEL " + (currentLevel + 1);
         }
+
         StartCoroutine(WaitForReplayFinish());
         //todo: display gameover screen;
         //Started = false;
@@ -150,6 +167,7 @@ public class GameManager : MonoSingleton<GameManager>
             Debug.Log("replaying");
             yield return null;
         }
+
         yield return new WaitForSeconds(2f);
 
         Replaying = false;
@@ -157,7 +175,7 @@ public class GameManager : MonoSingleton<GameManager>
         //ReplayManager.Target.Reset();
         if (currentLevel != 3)
         {
-            StartGame(currentLevel+1);
+            StartGame(currentLevel + 1);
             StartCoroutine(TimeManager.Instance.Load());
         }
         else
@@ -175,9 +193,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Time.timeScale = 1;
         Debug.Log(level);
-        currentLevel = level ;
+        currentLevel = level;
         Started = true;
         SceneManager.LoadScene(level);
-        mc.gameObject.SetActive(false);
     }
 }
