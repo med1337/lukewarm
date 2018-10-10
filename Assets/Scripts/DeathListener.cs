@@ -7,7 +7,7 @@ public class DeathListener : MonoBehaviour {
     [SerializeField] float max_speed = 5.0f;
     [SerializeField] ParticleSystem death_particles;
 
-    private bool dead = false;
+    public bool dead = false;
 
 	// Use this for initialization
 	void Start () {

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4049283187450998}
   - component: {fileID: 114474351471270976}
   - component: {fileID: 114758465993622714}
+  - component: {fileID: 114072788363171616}
   m_Layer: 0
   m_Name: ReplayManager
   m_TagString: Untagged
@@ -70,6 +71,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114072788363171616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013932592787866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -751053920, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -1
+  fileDirectory: 
+  fileName: superh.replay
+  overwriteExistingFiles: 1
+  chunkCacheSize: 16
+  logDebugMessages: 1
 --- !u!114 &114474351471270976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,12 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: -1681009243, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordOnStart: 0
+  recordOnStart: 1
   playbackEndBehaviour: 0
   dontDestroyOnLoad: 1
   recordFPS: 30
   prefabs:
   - {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a, type: 2}
+  - {fileID: 1961249346079884, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}
   - {fileID: 1139332905820708, guid: ec36f879ca7c0ab4c932ddfe0434f2d3, type: 2}
 --- !u!114 &114758465993622714
 MonoBehaviour:

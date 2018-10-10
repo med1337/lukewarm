@@ -25,11 +25,11 @@ public class TimeManager : MonoSingleton<TimeManager>
     {
         ResetTimers();
         yield return null;
-        Debug.Log(ReplayManager.IsDisposing);
-        Debug.Log(ReplayManager.Target.IsReplaying);
-        Debug.Log(ReplayManager.Target.IsReplaying);
-        Debug.Log(ReplayManager.Target.IsInvoking());
-        ReplayManager.BeginRecording(true);
+        //Debug.Log(ReplayManager.IsDisposing);
+        //Debug.Log(ReplayManager.Target.IsReplaying);
+        //Debug.Log(ReplayManager.Target.IsReplaying);
+        //Debug.Log(ReplayManager.Target.IsInvoking());
+        //ReplayManager.BeginRecording(true);
     }
 
 

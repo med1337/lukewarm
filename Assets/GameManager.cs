@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UltimateReplay;
 using UltimateReplay.Storage;
@@ -11,19 +12,57 @@ public class GameManager : MonoSingleton<GameManager>
     public bool Started = false;
     public bool Hold = false;
     public bool Throw = false;
+    public bool Replaying = false;
     private float holdTimer = 0.0f;
     public MenuController mc;
+    public List<DeathListener> enemies = new List<DeathListener>();
     private bool pressed = false;
     // Use this for initialization
     void Start()
     {
         Application.targetFrameRate = 15;
+        SceneManager.sceneLoaded += onLoaded;
     }
 
+    private void onLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0.buildIndex != 0)
+        {
+            var x =GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (var o in x)
+            {
+                enemies.Add(o.GetComponent<DeathListener>());
+            }
+        }
+    }
+
+
+    public void CheckWinState()
+    {
+        if (enemies.Count==0)
+        {
+            return;
+        }
+        bool win = enemies[0].dead;
+        for (var index = 1; index < enemies.Count; index++)
+        {
+            var deathListener = enemies[index];
+            win = win && deathListener.dead;
+        }
+
+        if (win)
+        {
+            LevelComplete();
+        }
+
+        enemies = new List<DeathListener>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if(Started && !Replaying)
+            CheckWinState();
         if (pressed)
         {
             holdTimer += Time.deltaTime;
@@ -37,7 +76,8 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (Input.GetKeyUp(KeyCode.R))
         {
-            StartGame(currentLevel);
+            RestartLevel();
+            //StartGame(currentLevel);
         }
 
         if (Input.GetKeyUp(KeyCode.P))
@@ -84,6 +124,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void LevelComplete()
     {
+        Replaying = true;
         ReplayManager.StopRecording();
         ReplayManager.BeginPlayback();
         Time.timeScale = 2;
@@ -107,6 +148,8 @@ public class GameManager : MonoSingleton<GameManager>
         }
         yield return new WaitForSeconds(2f);
 
+        Replaying = false;
+        DestroyImmediate(GameObject.Find("ReplayManager"));
         //ReplayManager.Target.Reset();
         if (currentLevel != 3)
         {
@@ -115,7 +158,6 @@ public class GameManager : MonoSingleton<GameManager>
         }
         else
         {
-            Destroy(ReplayManager.Instance);
             mc.gameObject.SetActive(true);
             mc.img.gameObject.SetActive(true);
             SceneManager.LoadScene(0);

@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 198150431164292154}
   - component: {fileID: 199260627512417514}
   - component: {fileID: 114725628474334724}
+  - component: {fileID: 114328746196693996}
+  - component: {fileID: 114936411523953660}
   m_Layer: 11
   m_Name: Death Particles
   m_TagString: Untagged
@@ -59,6 +61,8 @@ GameObject:
   - component: {fileID: 114444745374301740}
   - component: {fileID: 54002631215419392}
   - component: {fileID: 65356189084605748}
+  - component: {fileID: 114822134043370296}
+  - component: {fileID: 114286783055969294}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -134,6 +138,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.21, z: 0.008309794}
   m_Center: {x: 0, y: 0, z: -0.00081913493}
+--- !u!114 &114286783055969294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961249346079884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 411743824, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -1
+  prefabIdentity: Enemy
+  observedComponents:
+  - {fileID: 114822134043370296}
+  - {fileID: 114328746196693996}
+--- !u!114 &114328746196693996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830699277242238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -698208440, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -1
+  observedParticleSystem: {fileID: 198150431164292154}
+  simulateChildren: 0
 --- !u!114 &114444745374301740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_speed: 3
   death_particles: {fileID: 198150431164292154}
+  dead: 0
 --- !u!114 &114725628474334724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +219,24 @@ MonoBehaviour:
   rifle_sprite: {fileID: 21300000, guid: 5bcac7714093e984aa8ddddacd7e5c65, type: 3}
   shotgun_sprite: {fileID: 21300000, guid: 31455ec8e09f99949949740a279ce3d0, type: 3}
   equipped_gun_sprite: {fileID: 1601329499117190}
+--- !u!114 &114822134043370296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961249346079884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -864523685, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -1
+  recordPosition: 1
+  recordRotation: 1
+  recordScale: 0
+  interpolate: 1
+  lowPrecision: 0
 --- !u!114 &114851312438931426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,6 +248,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a74b969e5947a942b9a20dc4ef60493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114936411523953660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830699277242238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 411743824, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: 5304
+  prefabIdentity: 
+  observedComponents:
+  - {fileID: 114328746196693996}
 --- !u!198 &198150431164292154
 ParticleSystem:
   m_ObjectHideFlags: 1
