@@ -131,7 +131,11 @@ public class GameManager : MonoSingleton<GameManager>
         TimeManager.Instance.ResetTimers();
         mc.gameObject.SetActive(true);
         mc.img.gameObject.SetActive(false);
-        mc.start.text = "PRESS BUTTON TO START\nLEVEL " + (currentLevel+1);
+        mc.start.text = "PRESS BUTTON TO START";
+        if (currentLevel != 3)
+        {
+            mc.start.text += "\nLEVEL " + (currentLevel+1);
+        }
         StartCoroutine(WaitForReplayFinish());
         //todo: display gameover screen;
         //Started = false;
@@ -158,7 +162,9 @@ public class GameManager : MonoSingleton<GameManager>
         }
         else
         {
+            Started = false;
             mc.gameObject.SetActive(true);
+            mc.start.text = "PRESS BUTTON TO START";
             mc.img.gameObject.SetActive(true);
             SceneManager.LoadScene(0);
         }
