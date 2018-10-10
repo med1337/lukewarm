@@ -18,6 +18,22 @@ public class ParticleTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        main.simulationSpeed = TimeManager.Instance.Scale;
+        if (!TimeManager.Instance.MovementDetected)
+        {
+            if (ps.IsAlive())
+            {
+                ps.Pause();
+            }
+        }
+
+        else
+        {
+            if (ps.isPaused)
+            {
+                ps.Play();
+            }
+            
+            main.simulationSpeed = TimeManager.Instance.Scale;
+        }        
     }
 }

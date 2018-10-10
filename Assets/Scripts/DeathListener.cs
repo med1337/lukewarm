@@ -24,9 +24,14 @@ public class DeathListener : MonoBehaviour {
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider>().enabled = false;
 
-                death_particles.Play();
-
-                Destroy(this.gameObject, 3);
+                death_particles.Play();                
+            }            
+        }
+        else
+        {
+            if (!death_particles.IsAlive())
+            {
+                Destroy(this.gameObject);
             }
         }
 	}

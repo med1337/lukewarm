@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961249346079884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19, y: 0.87, z: 7}
+  m_LocalPosition: {x: -2.5700002, y: 0.87000006, z: -2.95}
   m_LocalScale: {x: 8, y: 8, z: 5}
   m_Children:
   - {fileID: 4683851054719478}
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830699277242238}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf5992fe7372344dad9f1c654120b02, type: 3}
   m_Name: 
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542aa07c26632a54a9328eee57710733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipped_gun: 0
+  equipped_gun: 2
   bullet_prefab: {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a,
     type: 2}
   vision_radius: 20
@@ -200,7 +200,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830699277242238}
   serializedVersion: 5
-  lengthInSec: 3
+  lengthInSec: 30
   simulationSpeed: 1
   stopAction: 0
   looping: 0

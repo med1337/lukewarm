@@ -106,13 +106,15 @@ public class CameraMovement : MonoBehaviour
 
         for (int i = 0; i < hit_colliders.Length; i++)
         { 
-            if (hit_colliders[i].gameObject.tag == "Enemy")
+            if (hit_colliders[i].gameObject.GetComponent<Enemy_shooting>())
             {
                 if (!holding_throwable)
-                {
-                    can_punch = true;
-
-                    fist.SetActive(true);
+                {                    
+                    if (TimeManager.Instance.MovementDetected)
+                    {
+                        can_punch = true;
+                        fist.SetActive(true);
+                    }
                 }
             }
             i++;
@@ -130,7 +132,7 @@ public class CameraMovement : MonoBehaviour
                 {
                     for (int i = 0; i < hit_colliders.Length; i++)
                     {
-                        if (hit_colliders[i].gameObject.tag == "Enemy")
+                        if (hit_colliders[i].gameObject.GetComponent<Enemy_shooting>())
                         {
                             float force_value = 20.0f;
 
