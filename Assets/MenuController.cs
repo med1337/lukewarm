@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private float start_delay = 0.3f;
     private float tmr = 0.0f;
     [SerializeField] private float dl = 2.0f;
+    private GameObject soundMaker; 
 
 
     // Use this for initialization
@@ -23,6 +24,7 @@ public class MenuController : MonoBehaviour
     {
         current_text = luke;
         current_text.enabled = true;
+        soundMaker = GameObject.Find("AudioPlayer"); 
     }
     
 
@@ -52,10 +54,12 @@ public class MenuController : MonoBehaviour
 
                 if (current_text.text == luke.text)
                 {
+                    soundMaker.GetComponent<audioPlayer>().PlaySound(5);
                     current_text = warm;
                 }
                 else
                 {
+                    soundMaker.GetComponent<audioPlayer>().PlaySound(4);
                     current_text = luke;
                 }
 
