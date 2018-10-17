@@ -110,17 +110,6 @@ public class GameManager : MonoSingleton<GameManager>
             pressed = false;
             Hold = false;
         }
-
-
-        if (Throw)
-        {
-            Debug.Log("Throw");
-        }
-
-        if (Hold)
-        {
-            Debug.Log("Hold");
-        }
     }
 
 
