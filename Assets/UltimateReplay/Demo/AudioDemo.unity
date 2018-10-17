@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   replayIdentity:
-    id: 32635
+    id: 7435
   recordSeconds: 15
 --- !u!114 &432989874
 MonoBehaviour:
@@ -186,8 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordOnStart: 1
-  playbackEndBehaviour: 0
   dontDestroyOnLoad: 0
+  playbackEndBehaviour: 0
+  updateMethod: 0
   recordFPS: 8
   prefabs: []
 --- !u!4 &432989875
@@ -492,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   replayIdentity:
-    id: -32194
+    id: -7735
   observedAudioSource: {fileID: 1813464600}
 --- !u!114 &1813464599
 MonoBehaviour:
@@ -506,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   replayIdentity:
-    id: 14109
+    id: -18660
   prefabIdentity: 
   observedComponents:
   - {fileID: 1813464598}

@@ -6,12 +6,13 @@ public class DeathListener : MonoBehaviour {
 
     [SerializeField] float max_speed = 5.0f;
     [SerializeField] ParticleSystem death_particles;
+    [SerializeField] GameObject death_particles_prefab;
 
     public bool dead = false;
 
 	// Use this for initialization
-	void Start () {
-	}
+	public void Start () {
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -21,18 +22,19 @@ public class DeathListener : MonoBehaviour {
             if (GetComponent<Rigidbody>().velocity.magnitude > max_speed)
             {
                 dead = true;
-                GetComponent<SpriteRenderer>().enabled = false;
+                //GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider>().enabled = false;
-                
-                death_particles.Play();                
+                transform.localScale=Vector3.zero;
+                GameObject.Instantiate(death_particles_prefab, transform.position,Quaternion.identity);
+                //death_particles.Play();                
             }            
         }
         else
         {
-            if (!death_particles.IsAlive())
-            {
-                Destroy(this.gameObject);
-            }
+            //if (!death_particles.IsAlive())
+            //{
+            //    //Destroy(this.gameObject);
+            //}
         }
 	}
 }

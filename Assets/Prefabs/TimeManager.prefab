@@ -277,6 +277,7 @@ MonoBehaviour:
   Title: {fileID: 114098124569501526}
   timerText: {fileID: 114967598485063840}
   reatltimeTimerText: {fileID: 114426043196168090}
+  prefab: {fileID: 1963271869595524, guid: 040b3d231089f55419cdf6f24146e690, type: 2}
 --- !u!114 &114967598485063840
 MonoBehaviour:
   m_ObjectHideFlags: 1

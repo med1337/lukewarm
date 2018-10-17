@@ -9,58 +9,111 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1217489972347824}
+  m_RootGameObject: {fileID: 1963271869595524}
   m_IsPrefabAsset: 1
---- !u!1 &1217489972347824
+--- !u!1 &1963271869595524
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4130942160430292}
-  - component: {fileID: 198230006169582916}
-  - component: {fileID: 199726656190685892}
-  - component: {fileID: 114583017036196222}
-  m_Layer: 0
-  m_Name: Death Particles 1
+  - component: {fileID: 4110125564055358}
+  - component: {fileID: 198001869932146254}
+  - component: {fileID: 199368001447506726}
+  - component: {fileID: 114278059354948850}
+  - component: {fileID: 114004921884678818}
+  - component: {fileID: 114301638324886170}
+  - component: {fileID: 114653143959541076}
+  m_Layer: 11
+  m_Name: Death Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4130942160430292
+--- !u!4 &4110125564055358
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217489972347824}
+  m_GameObject: {fileID: 1963271869595524}
   m_LocalRotation: {x: -0.5000001, y: 0.4999999, z: -0.5000001, w: 0.4999999}
-  m_LocalPosition: {x: 1.0137495, y: 0.549, z: 2.8673048}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 89.99999}
---- !u!114 &114583017036196222
+--- !u!114 &114004921884678818
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217489972347824}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1963271869595524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -698208440, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: 21470
+  observedParticleSystem: {fileID: 198001869932146254}
+  simulateChildren: 0
+--- !u!114 &114278059354948850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963271869595524}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf5992fe7372344dad9f1c654120b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &198230006169582916
+--- !u!114 &114301638324886170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963271869595524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 411743824, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: 10154
+  prefabIdentity: 
+  observedComponents:
+  - {fileID: 114004921884678818}
+  - {fileID: 114653143959541076}
+--- !u!114 &114653143959541076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963271869595524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -864523685, guid: 7c8d774bda0ffb443a85d05ce98120c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayIdentity:
+    id: -27530
+  recordPosition: 1
+  recordRotation: 1
+  recordScale: 1
+  interpolate: 1
+  lowPrecision: 0
+--- !u!198 &198001869932146254
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217489972347824}
+  m_GameObject: {fileID: 1963271869595524}
   serializedVersion: 5
-  lengthInSec: 3
+  lengthInSec: 30
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -131,9 +184,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 3
-      minScalar: 5
+      minMaxState: 3
+      scalar: 5
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -185,7 +238,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -301,7 +354,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -623,7 +676,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -703,8 +756,8 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 1
-    sphericalDirectionAmount: 0
+    randomDirectionAmount: 0
+    sphericalDirectionAmount: 1
     randomPositionAmount: 0
     radius:
       value: 0.34345424
@@ -936,8 +989,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 15
-        minScalar: 10
+        scalar: 30
+        minScalar: 20
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -2106,8 +2159,8 @@ ParticleSystem:
     m_Mode: 0
     m_Curve:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 3
+      minMaxState: 0
+      scalar: 0.1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2544,9 +2597,9 @@ ParticleSystem:
     dampen: 0
     drag:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.2
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2600,7 +2653,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2757,7 +2810,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 0.3
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -3545,7 +3598,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3598,7 +3651,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3703,7 +3756,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.0001
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -4661,13 +4714,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199726656190685892
+--- !u!199 &199368001447506726
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217489972347824}
+  m_GameObject: {fileID: 1963271869595524}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

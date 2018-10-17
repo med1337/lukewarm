@@ -54,9 +54,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordOnStart: 1
-  playbackEndBehaviour: 0
   dontDestroyOnLoad: 0
-  recordFPS: 30
+  playbackEndBehaviour: 0
+  updateMethod: 0
+  recordFPS: 20
   prefabs:
   - {fileID: 1746654510975370, guid: c6ffc5d15efbd15469201a8cdb6b254a, type: 2}
   - {fileID: 1961249346079884, guid: a16b7861897d5a649aecf859e0332bb8, type: 2}

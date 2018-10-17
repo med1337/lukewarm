@@ -55,7 +55,7 @@ public class PickUpScript : MonoBehaviour
                 soundmaker.GetComponent<audioPlayer>().PlaySound(1);
             }
 
-            Destroy(this.gameObject, 0.2f);
+            transform.localScale = Vector3.zero;
         }
     }
 

@@ -19,6 +19,7 @@ public class TimeManager : MonoSingleton<TimeManager>
     [SerializeField] private Text Title;
     [SerializeField] private Text timerText;
     [SerializeField] private Text reatltimeTimerText;
+    [SerializeField] private GameObject prefab;
 
     
     public IEnumerator Load()
@@ -32,6 +33,11 @@ public class TimeManager : MonoSingleton<TimeManager>
         //ReplayManager.BeginRecording(true);
     }
 
+
+    public void Start()
+    {
+        ReplayManager.RegisterReplayPrefab(prefab);
+    }
 
     public void ResetTimers()
     {

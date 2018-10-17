@@ -121,6 +121,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public IEnumerator RRL()
     {
+        Time.timeScale = 1;
         yield return new WaitForSeconds(1.0f);
 
         SceneManager.LoadScene(currentLevel);
@@ -130,6 +131,9 @@ public class GameManager : MonoSingleton<GameManager>
     public void LevelComplete()
     {
         Replaying = true;
+        var x = GameObject.FindGameObjectsWithTag("Enemy");
+        
+
         ReplayManager.StopRecording();
         ReplayManager.BeginPlayback();
         Time.timeScale = 2;

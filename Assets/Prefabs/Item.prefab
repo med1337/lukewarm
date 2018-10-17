@@ -91,7 +91,7 @@ MonoBehaviour:
     id: -1
   recordPosition: 1
   recordRotation: 1
-  recordScale: 0
+  recordScale: 1
   interpolate: 1
   lowPrecision: 0
 --- !u!114 &114823905431019876
